@@ -1,3 +1,4 @@
+from utils.file_handler import save_uploaded_file
 import asyncio
 from utils.song_recognition import recognize_song
 import streamlit as st
@@ -24,7 +25,11 @@ def show_home():
             with st.spinner("Recognizing song..."):
 
     result = asyncio.run(
-        recognize_song(uploaded_file)
+        audio_path = save_uploaded_file(uploaded_file)
+
+result = asyncio.run(
+    recognize_song(audio_path)
+)
     )
 
 if result is None:
