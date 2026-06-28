@@ -1,3 +1,5 @@
+import asyncio
+from utils.song_recognition import recognize_song
 import streamlit as st
 from pathlib import Path
 
