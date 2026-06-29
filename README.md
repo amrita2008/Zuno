@@ -1,171 +1,232 @@
-# 🎵 Zuno
+# Zuno
 
-### The Missing Layer Between Music Discovery and Music Understanding
+## Overview
 
-Most people don't discover music inside streaming apps.
+Zuno is an AI-powered music intelligence platform designed to analyze music through recommendation systems, semantic embeddings, multilingual lyric translation, and personalized listening insights. The project combines natural language processing, deep learning, semantic search, and data analytics into a unified architecture for intelligent music exploration.
 
-They discover it in cafés, at parties, in reels, on road trips, in stores, and through everyday life.
-
-Yet those moments are often lost.
-
-And even when users find the song, they may not understand the lyrics because they're in a different language.
-
-**Zuno bridges that gap.**
+The system is organized as a modular AI pipeline where each component performs an independent task while sharing common datasets, embeddings, and metadata.
 
 ---
 
-## 🌍 What is Zuno?
+# System Architecture
 
-Zuno is an AI-powered music discovery and translation layer designed for streaming platforms.
-
-It helps users:
-
-* Discover songs around them
-* Save those discoveries automatically
-* Translate lyrics in real time
-* Build playlists from everyday music encounters
-* Track their musical journey through AI-generated summaries
-
----
-
-## ✨ Why Zuno?
-
-Imagine hearing an amazing song at a café.
-
-Instead of opening multiple apps, searching for lyrics, or forgetting the song entirely...
-
-Zuno simply works.
-
-```text
-Song Detected 🎵
-
-Tití Me Preguntó
-Bad Bunny
-Spanish
+```
+                           User
+                             │
+                             ▼
+                    Streamlit Interface
+                             │
+        ┌────────────────────┼────────────────────┐
+        ▼                    ▼                    ▼
+ Recommendation Engine   Translation Engine   Live Music Intelligence
+        │                    │                    │
+        └──────────────┬─────┴────────────────────┘
+                       ▼
+                Embedding Layer
+                       │
+             Sentence Transformers
+                       │
+                       ▼
+                 Music Dataset
+                       │
+          Feature Engineering Pipeline
+                       │
+                       ▼
+                  Analytics Layer
+                       │
+                       ▼
+                Zuno Wrapped Report
 ```
 
-The song is instantly added to your discovery history.
-
-No searching.
-No screenshots.
-No forgotten songs.
-
 ---
 
-## 🌐 Real-Time Lyric Translation
+# Repository Structure
 
-Music shouldn't require a translator.
-
-As a song plays, Zuno displays synchronized translated lyrics directly inside the listening experience.
-
-```text
-Original
-
-Yo perreo sola
-
-↓
-
-English
-
-I dance on my own
+```
+Zuno/
+│
+├── app.py
+├── requirements.txt
+├── README.md
+│
+├── assets/
+│
+├── data/
+│   ├── zuno_dataset.xls
+│   ├── recommended_playlist.xls
+│   ├── user_history.xls
+│   ├── zuno_wrapped.xls
+│   └── translations.json
+│
+├── models/
+│   └── zuno_embeddings.npy
+│
+├── notebooks/
+│   ├── data_preprocessing.ipynb
+│   ├── Recommendation Engine.ipynb
+│   ├── translation_engine.ipynb
+│   ├── live_music_intelligence.ipynb
+│   └── Zuno Wrapped.ipynb
+│
+├── components/
+│
+└── utils/
 ```
 
-Users can finally enjoy global music without language becoming a barrier.
+---
+
+# Core Components
+
+## Data Processing
+
+The preprocessing pipeline performs data cleaning, normalization, metadata integration, and feature engineering to construct a unified music dataset suitable for downstream machine learning tasks.
 
 ---
 
-## 📖 Daily Discovery Wrap
+## Recommendation Engine
 
-Spotify Wrapped tells users what they listened to.
+The recommendation engine generates semantic music recommendations using transformer-generated embeddings and cosine similarity. Songs are represented in a dense embedding space constructed from musical metadata, lyrical information, and contextual features.
 
-Zuno tells users what they discovered.
+Primary techniques include:
 
-```text
-Today's Discoveries
+* Sentence Transformers
+* Semantic Embeddings
+* Cosine Similarity Search
+* Vector-based Recommendation
 
-🎵 Songs Found: 21
+---
 
-🌎 Languages:
-Spanish, Korean, English
+## Translation Engine
 
-🎤 New Artists: 8
+The translation module provides multilingual lyric translation while preserving semantic context. It is designed to support multiple languages through large language models and structured translation mappings.
 
-🔥 Top Genre:
-Latin Pop
+---
+
+## Live Music Intelligence
+
+This module performs contextual analysis on music metadata and user interactions to generate insights related to genres, listening behavior, artist relationships, and recommendation context.
+
+---
+
+## Zuno Wrapped
+
+The analytics engine summarizes listening activity by aggregating historical interactions into interpretable insights such as listening preferences, genre distribution, artist statistics, and personalized summaries.
+
+---
+
+# Machine Learning Pipeline
+
+```
+Music Dataset
+      │
+      ▼
+Data Cleaning
+      │
+      ▼
+Feature Engineering
+      │
+      ▼
+Sentence Embedding Generation
+      │
+      ▼
+Embedding Storage
+      │
+      ▼
+Similarity Computation
+      │
+      ▼
+Recommendation Generation
+      │
+      ▼
+User Analytics
 ```
 
-A living music journal generated automatically.
+---
 
-Every day.
+# Technology Stack
+
+## Programming Language
+
+* Python
+
+## Machine Learning
+
+* Scikit-learn
+* Sentence Transformers
+* NumPy
+* Pandas
+
+## Natural Language Processing
+
+* Transformers
+* Semantic Embeddings
+* Cosine Similarity
+
+## Data Processing
+
+* Pandas
+* NumPy
+
+## Visualization
+
+* Matplotlib
+* Plotly
+
+## Interface
+
+* Streamlit
+
+## Development Environment
+
+* Jupyter Notebook
+* Git
+* GitHub
+* GitHub Codespaces
 
 ---
 
-## 🎶 AI Playlist Generation
+# Project Workflow
 
-Every discovery becomes actionable.
-
-With one tap, Zuno transforms discovered songs into playlists like:
-
-* Today's Finds
-* Café Discoveries
-* Roadtrip Mix
-* Weekend Vibes
-* International Favorites
-
-Helping users revisit the music they naturally encountered.
-
----
-
-## 🧠 Powered By AI
-
-### Song Recognition
-
-Detect songs from ambient audio.
-
-### Lyric Intelligence
-
-Retrieve and synchronize lyrics in real time.
-
-### Multilingual Translation
-
-Break language barriers instantly.
-
-### Recommendation Engine
-
-Convert discoveries into meaningful playlists and listening experiences.
+```
+Data Collection
+      │
+      ▼
+Data Preprocessing
+      │
+      ▼
+Embedding Generation
+      │
+      ▼
+Recommendation Modeling
+      │
+      ▼
+Translation Pipeline
+      │
+      ▼
+Analytics Generation
+      │
+      ▼
+Interactive Interface
+```
 
 ---
 
-## 📈 Value for Streaming Platforms
+# Future Improvements
 
-### Increase User Engagement
-
-Users return daily to review discoveries and playlists.
-
-### Improve Global Music Adoption
-
-Listeners become more comfortable exploring music across languages.
-
-### Strengthen Retention
-
-Discovery history creates a personal archive unique to each user.
-
-### Unlock New Premium Features
-
-Real-time translation and AI discovery tools can become premium offerings.
+* Real-time recommendation updates
+* Large Language Model assisted music insights
+* Audio feature extraction pipeline
+* Vector database integration
+* Hybrid recommendation system
+* User authentication and profile management
+* Cloud deployment
+* Personalized recommendation fine-tuning
+* Distributed embedding retrieval
+* Model optimization for large-scale music collections
 
 ---
 
-## 🚀 Vision
+# License
 
-Music is no longer local.
+This project is intended for educational, research, and portfolio purposes.
 
-Discovery shouldn't be accidental.
-
-Understanding shouldn't require effort.
-
-Zuno transforms every song a user encounters into a lasting part of their musical journey.
-
----
-
-### Hear It. Save It. Understand It.
